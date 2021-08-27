@@ -1,0 +1,81 @@
+# Deployment environment
+# Can be set by either NODE_ENV or LGEC_ENV
+# env: development
+
+http:
+  host: localhost
+  port: 3030
+  prefix: /erp
+
+cors:
+  credentials: true
+
+mysql:
+  host: 127.0.0.1
+  port: 3306
+  user: lgec_erp
+  database: logicalec_erp
+  password: 'abc123'
+  debug: true
+  pool:
+    min: 0
+    max: 10
+
+auth:
+  # Map of roles to a comma separated list of resource identifiers (supports glob matching)
+  # Resource identifiers are formed by an HTTP method (or `*` for any method) followed by a URL path name
+  # e.g.: `GET/foo,POST/foo,DELETE/bar/*,*/baz` would only allow access to a certain role to GET and POST /foo requests,
+  # DELETE /bar/* (matching paths like /bar/1, /bar/2, etc.) and any HTTP method on /baz
+  # Be aware that actual path names could be namespaced by the `http.prefix` option, so a resource under `/foo` could
+  # end up being located at `/{http.prefix}/foo` after starting the server - you can workaround this by either including
+  # the prefix in the resources explicitly or using a `**` globstar (e.g: `GET/**/foo` would match any prefix)
+  restrict:
+    admin: '**/**'
+
+  remote:
+    header: X-Remote-User
+    env: REMOTE_USER
+  jwt:
+    secret: mik3wfQ34Eek3B5k9
+
+    # Name of the cookie to check for the authorization token
+    # If not found here, the `Authorization` HTTP header will be checked next
+    # See https://github.com/koajs/jwt#retrieving-the-token
+    cookie: __logicalecerptoken
+
+    # Expressed in seconds or a string describing a time span
+    # See https://github.com/zeit/ms
+    expiresIn: 2d
+  password:
+    length:
+      min: 12
+      max: 24
+    digits: 2
+    upper: true
+    lower: true
+    symbols: 2
+  salt: 'gtsFLYihvFqwa2K'
+
+multer:
+  # See https://github.com/expressjs/multer#limits
+  limits:
+    # Maximum number of files in a single multi-part upload
+    files: 1
+    # Maximum allowed file size in bytes (20MB -> 20000000)
+    fileSize: 20000000
+
+logger:
+  timestamp: YYYY-MM-DD HH:mm:ss,SSS
+  colorize: true
+  align: true
+  level: debug
+
+morgan:
+  format: combined
+
+json:
+  pretty: false
+  param: pretty
+
+compress:
+  threshold: 2048

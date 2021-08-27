@@ -1,0 +1,10 @@
+[
+  {
+    "username": "admin",
+    "password": "admin",
+    "name": "Admin",
+    "lastname": "ERP",
+    "email": "facturacion@logical.ec",
+    "account_control": 513
+  }
+]

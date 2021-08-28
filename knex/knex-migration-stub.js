@@ -8,6 +8,12 @@ const TABLE_NAME = '';
  */
 async function up (knex) {
   // TODO: Define migration script
+  return knex.schema.createTable(TABLE_NAME, function (table) {
+    table.increments();
+    // TODO: Add necesary fields
+    table.timestamp('created_at').defaultTo(knex.fn.now());
+    table.timestamp('updated_at').defaultTo(knex.fn.now());
+  });
 }
 
 /**
@@ -16,6 +22,7 @@ async function up (knex) {
  */
 async function down (knex) {
   // TODO: Define rollback script
+  return knex.schema.dropTable(TABLE_NAME);
 }
 
 module.exports = { up, down };

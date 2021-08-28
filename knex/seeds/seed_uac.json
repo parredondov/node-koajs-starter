@@ -1,0 +1,16 @@
+[
+  { "value": 1, "key": "IS_ADMIN", "name": "Is admin", "admin_only": true },
+  { "value": 2, "key": "ACCOUNTDISABLE", "name": "Disable account" },
+  { "value": 4, "key": "HOMEDIR_REQUIRED", "name": "Unused", "active": false },
+  { "value": 8, "key": "LOCKOUT", "name": "Lockout" },
+  { "value": 16, "key": "PASSWD_NOTREQD", "name": "Password not required to follow policy" },
+  { "value": 32, "key": "PASSWD_CANT_CHANGE", "name": "User can't change password" },
+  { "value": 64, "key": "ENCRYPTED_TEXT_PWD_ALLOWED", "name": "Unused", "active": false },
+  { "value": 128, "key": "TEMP_DUPLICATE_ACCOUNT", "name": "Unused", "active": false },
+  { "value": 256, "key": "NORMAL_ACCOUNT", "name": "Normal user account" },
+  { "value": 512, "key": "PASSWORD_EXPIRED", "name": "Expire password" },
+  { "value": 1024, "key": "INTERDOMAIN_TRUST_ACCOUNT", "name": "Unused", "active": false },
+  { "value": 2048, "key": "WORKSTATION_TRUST_ACCOUNT", "name": "Unused", "active": false },
+  { "value": 4096, "key": "SERVER_TRUST_ACCOUNT", "name": "Unused", "active": false },
+  { "value": 8192, "key": "DONT_EXPIRE_PASSWORD", "name": "Don't expire password" }
+]

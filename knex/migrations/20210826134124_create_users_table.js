@@ -15,6 +15,7 @@ async function up (knex) {
     table.string('lastname').notNullable();
     table.string('email').notNullable();
     table.integer('account_control').notNullable().defaultTo(512);
+    table.integer('access_control').notNullable().defaultTo(1); // TODO: implement access control
     table.timestamp('created_at').defaultTo(knex.fn.now());
     table.timestamp('updated_at').defaultTo(knex.fn.now());
   });

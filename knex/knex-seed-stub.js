@@ -18,7 +18,7 @@ async function seed (knex) {
 
   if (tableExists) {
     // Deletes ALL existing entries
-    await knex(TABLE_NAME).del();
+    await knex(TABLE_NAME).truncate();
 
     // Inserts seed entries
     return knex(TABLE_NAME).insert(data);
